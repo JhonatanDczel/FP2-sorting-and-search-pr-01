@@ -4,7 +4,7 @@ public class Student {
     private String linea;
     private String partes [] = null;
 
-    public void leerArchivos(String nArchivo) {
+    public void leerArchivos(String nArchivo) throws FileNotFoundException, IOException{
         FileReader arc = new FileReader(nArchivo);
         lector = new BufferedReader(arc);
         while (( linea = lector.readLine() ) != null) {
