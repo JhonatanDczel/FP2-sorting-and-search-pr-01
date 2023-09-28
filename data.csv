@@ -1,4 +1,5 @@
-Nombre,Apellido,Edad,Correo electrónico
-Juan,Pérez,30,juan@example.com
-María,Gómez,25,maria@example.com
-Carlos,Rodríguez,35,carlos@example.com
+20232197,jvelardesa@unsa.edu.pe,Jhossep,Velarde,Saldaña,2005/09/21,Masculino,True
+20230488,jmamanihuars@unsa.edu.pe,Jorge,Mamani,Huarsaya,2004/01/24,Masculino,True
+20232585,juan@example.com,Juan,Pérez,Gonzales,1821/07/21,Fluido,False
+20232534,maria@example.com,María,Gómez,Peralta,2075/02/30,Masculino,False
+20232565,carlos@example.com,Armando,Paredes,Dormido,2001/08/12,Mobiliario,True
