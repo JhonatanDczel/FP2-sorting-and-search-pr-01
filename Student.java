@@ -32,10 +32,12 @@ public class Student {
         FileReader file = new FileReader(filename);
         reader = new BufferedReader(file);
         List <Student> sList = new ArrayList <Student>();
+        line = reader.readLine();
         while ((line = reader.readLine()) != null) {
+            parts = line.split(",");
+            if (parts.length < 4) break;
             Student s = new Student();
             sList.add(s);
-            parts = line.split(",");
             s.cui = Integer.valueOf( parts[0] );
             s.email = parts[1];
             s.name = parts[2];
@@ -50,14 +52,21 @@ public class Student {
         return array;
     }
 
+    public String getName () {
+        return name;
+    }
+    public int  getCui () {
+        return Integer.valueOf(cui);
+    }
 }
 /*
-   Por ese leerArchivos hacemos que nos cree un nuevo objeto student,
+   Necesitamos un método que nos cree un nuevo objeto student a partir del data.csv,
    Por medio del array que se obtiene, le declaramos en ese mismo método todos sus atributos
-   Despues, hasta que el while acabe le declaramos la longitud de
 
    Necesitamos que los algoritmos reciban un array de objetos, así accedemos a sus atributos
    De esa manera los ordenamos
 
-esa cadena, d
+
+   PENDIENTES ---------------------------------
+   Realizar metodos de modificación y acceso al resto de atributos
 */
