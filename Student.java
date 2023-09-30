@@ -1,20 +1,63 @@
+import java.util.*;
 import java.io.*;
 public class Student {
-    private BufferedReader lector;
-    private String linea;
-    private String partes [] = null;
+    // Atributos de objeto student
+    private int cui;
+    private String email;
+    private String name;
+    private String patSurname;
+    private String matSurname;
+    private String birthDate;
+    private String gender;
+    private String status;
+    // Atributos de lectura de archivos
+    private BufferedReader reader;
+    private String line;
+    private String parts [] = null;
 
     public void leerArchivos(String nArchivo) throws FileNotFoundException, IOException{
         FileReader arc = new FileReader(nArchivo);
-        lector = new BufferedReader(arc);
-        while (( linea = lector.readLine() ) != null) {
-            partes = linea.split(",");
+        reader = new BufferedReader(arc);
+        while (( line = reader.readLine() ) != null) {
+            parts = line.split(",");
             imprimirLinea();
             System.out.println();
         }
     }
     private void imprimirLinea(){
-        for (int i = 0; i < partes.length; i++) System.out.print(partes[i] + " | ");
+        for (int i = 0; i < parts.length; i++) System.out.print(parts[i] + " | ");
+    }
+
+    public Student [] mkStulist (String filename) throws FileNotFoundException, IOException {
+        FileReader file = new FileReader(filename);
+        reader = new BufferedReader(file);
+        List <Student> sList = new ArrayList <Student>();
+        while ((line = reader.readLine()) != null) {
+            Student s = new Student();
+            sList.add(s);
+            parts = line.split(",");
+            s.cui = Integer.valueOf( parts[0] );
+            s.email = parts[1];
+            s.name = parts[2];
+            s.patSurname = parts[3];
+            s.matSurname = parts[4];
+            s.birthDate = parts[5];
+            s.gender = parts[6];
+            s.status = parts[7];
+        }
+        Student [] array = new Student[sList.size()];
+        array = sList.toArray(array);
+        return array;
     }
 
 }
+/*
+   Por ese leerArchivos hacemos que nos cree un nuevo objeto student,
+   Por medio del array que se obtiene, le declaramos en ese mismo método todos sus atributos
+   Despues, hasta que el while acabe le declaramos la longitud de
+
+   Necesitamos que los algoritmos reciban un array de objetos, así accedemos a sus atributos
+   De esa manera los ordenamos
+
+esa cadena, d
+*/
