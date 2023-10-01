@@ -31,7 +31,7 @@ public class Insertion{
     for(int i = 0; i < compañeritos.length; i++){
       lowest = i;
       pivot = compañeritos[i];
-      while((lowest > 0) && (compareString(compañeritos[lowest - 1].getName(), pivot.getName())){
+      while((lowest > 0) && (compareString(compañeritos[lowest - 1].getName(), pivot.getName()))){
 	compañeritos[lowest] = compañeritos[lowest - 1];
 	lowest--;
       }
@@ -44,7 +44,7 @@ public class Insertion{
     for(int i = 0; i < compañeritos.length; i++){
       lowest = i;
       pivot = compañeritos[i];
-      while((lowest > 0) && (compareString(compañeritos[lowest - 1].getLastNameP(), pivot.getLastNameP())){
+      while((lowest > 0) && (compareString(compañeritos[lowest - 1].getLastNameP(), pivot.getLastNameP()))){
 	compañeritos[lowest] = compañeritos[lowest - 1];
 	lowest--;
       }
@@ -57,13 +57,42 @@ public class Insertion{
     for(int i = 0; i < compañeritos.length; i++){
       lowest = i;
       pivot = compañeritos[i];
-      while((lowest > 0) && (compareString(compañeritos[lowest - 1].getLastNameM(), pivot.getLastNameM())){
+      while((lowest > 0) && (compareString(compañeritos[lowest - 1].getLastNameM(), pivot.getLastNameM()))){
 	compañeritos[lowest] = compañeritos[lowest - 1];
 	lowest--;
       }
       compañeritos[lowest] = pivot;
     }
   }
+
+  public static void insertionAlgorithmDateOfBirth(Student[] compañeritos){
+    int lowest;
+    Student pivot;
+    for(int i = 0; i < compañeritos.length; i++){
+      lowest = i;
+      pivot = compañeritos[i];
+      while((lowest > 0) && (convertion(compañeritos[lowest - 1].getDateOfBirth()) > convertion(pivot.getDateOfBirth()))){
+        compañeritos[lowest] = compañeritos[lowest - 1];
+        lowest--;
+      }
+      compañeritos[lowest] = pivot;
+    }
+  }
+
+  public static void insertionAlgorithmGender(Student[] compañeritos){
+    int lowest;
+    Student pivot;
+    for(int i = 0; i < compañeritos.length; i++){
+      lowest = i;
+      pivot = compañeritos[i];
+      while((lowest > 0) && (comparString(compañeritos[lowest - 1].getDateOfBirth(), pivot.getDateOfBirth()))){
+        compañeritos[lowest] = compañeritos[lowest - 1];
+        lowest--;
+      }
+      compañeritos[lowest] = pivot;
+    }
+  }
+
   private static boolean compareEmail(String word1, String word2){
     int index1 = word1.indexOf('@');
     int index2 = word2.indexOf('@');
@@ -104,4 +133,10 @@ public class Insertion{
     }
     return false;
   }
+
+  public static int convertion(String one){
+    int a = parseInteger(one.substring(0, 4) + one.substring(4,6) + one.substring(6,8));
+    return a;
+  }
+
 }
