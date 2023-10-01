@@ -1,72 +1,78 @@
-import java.util.*;
-import java.io.*;
-public class Student {
-    // Atributos de objeto student
-    private int cui;
+public class Student{
+    private String cui;
     private String email;
     private String name;
-    private String patSurname;
-    private String matSurname;
-    private String birthDate;
+    private String lastNameF;
+    private String lastNameM;
+    private String dateOfBirth;
     private String gender;
     private String status;
-    // Atributos de lectura de archivos
-    private BufferedReader reader;
-    private String line;
-    private String parts [] = null;
 
-    public void leerArchivos(String nArchivo) throws FileNotFoundException, IOException{
-        FileReader arc = new FileReader(nArchivo);
-        reader = new BufferedReader(arc);
-        while (( line = reader.readLine() ) != null) {
-            parts = line.split(",");
-            imprimirLinea();
-            System.out.println();
-        }
-    }
-    private void imprimirLinea(){
-        for (int i = 0; i < parts.length; i++) System.out.print(parts[i] + " | ");
+    public String getCui(){
+        return cui;
     }
 
-    public Student [] mkStulist (String filename) throws FileNotFoundException, IOException {
-        FileReader file = new FileReader(filename);
-        reader = new BufferedReader(file);
-        List <Student> sList = new ArrayList <Student>();
-        line = reader.readLine();
-        while ((line = reader.readLine()) != null) {
-            parts = line.split(",");
-            if (parts.length < 4) break;
-            Student s = new Student();
-            sList.add(s);
-            s.cui = Integer.valueOf( parts[0] );
-            s.email = parts[1];
-            s.name = parts[2];
-            s.patSurname = parts[3];
-            s.matSurname = parts[4];
-            s.birthDate = parts[5];
-            s.gender = parts[6];
-            s.status = parts[7];
-        }
-        Student [] array = new Student[sList.size()];
-        array = sList.toArray(array);
-        return array;
+    public void setCui(String cui){
+        this.cui = cui;
     }
 
-    public String getName () {
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getName(){
         return name;
     }
-    public int  getCui () {
-        return Integer.valueOf(cui);
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getLastNameF(){
+        return lastNameF;
+    }
+
+    public void setLastNameF(String lastNameF){
+        this.lastNameF = lastNameF;
+    }
+
+    public String getLastNameM(){
+        return lastNameM;
+    }
+
+    public void setLastNameM(String lastNameM){
+        this.lastNameM = lastNameM;
+    }
+
+    public String getDateOfBirth(){
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender(){
+        return gender;
+    }
+
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public String toString(){
+        return "CUI: " + cui + " Email: " + email + " Nombre: " + name + " Apellido Paterno: " + lastNameF + " Apellido Materno: " + lastNameM + " Fecha de Nacimiento: " + dateOfBirth + " Genero: " + gender + " Estado: " + status;
     }
 }
-/*
-   Necesitamos un método que nos cree un nuevo objeto student a partir del data.csv,
-   Por medio del array que se obtiene, le declaramos en ese mismo método todos sus atributos
-
-   Necesitamos que los algoritmos reciban un array de objetos, así accedemos a sus atributos
-   De esa manera los ordenamos
-
-
-   PENDIENTES ---------------------------------
-   Realizar metodos de modificación y acceso al resto de atributos
-*/

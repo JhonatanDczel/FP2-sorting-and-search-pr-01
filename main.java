@@ -1,10 +1,10 @@
 import java.io.*;
 import java.io.*;
-public class main {
-    public static void main(String[] args) {
-        Student archivo = new Student();
+public class Main{
+    public static void main(String[] args){
+        StudentFinal archivo = new StudentFinal();
         try {
-          archivo.leerArchivos("data.csv");
+          archivo.readFile("data.csv");
         } catch (FileNotFoundException e){
             System.err.println("El archivo no se encontró: " + e.getMessage());
         } catch (IOException e) {
@@ -12,5 +12,3 @@ public class main {
         } 
     }
 }
-
-
