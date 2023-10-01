@@ -1,5 +1,4 @@
 import java.io.*;
-import java.io.*;
 public class Main{
     public static void main(String[] args){
         StudentFinal archivo = new StudentFinal();
