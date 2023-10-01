@@ -18,7 +18,7 @@ public class Insertion{
     for(int i = 0; i < compañeritos.length; i++){
       lowest = i;
       pivot = compañeritos[i];
-      while((lowest > 0) && (compareEmail(compañeritos[i].getEmail(), pivot.getEmail())){
+      while((lowest > 0) && (compareEmail(compañeritos[i].getEmail(), pivot.getEmail()))){
         compañeritos[lowest] = compañeritos[lowest - 1];
         lowest--;
       }
@@ -29,7 +29,7 @@ public class Insertion{
     int indexWord1 = word1.indexOf('@');
     int indexWord2 = word2.indexOf('@');
     int length = word1.substring(0, indexWord1).length();
-    if(length > word2.substring(0, indexWord2).length())){
+    if(length > word2.substring(0, indexWord2).length()){
       length = word2.substring(0, indexWord2).length();
     }
     int i = 0;

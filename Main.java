@@ -1,13 +1,10 @@
-import java.io.*;
 public class Main{
     public static void main(String[] args){
-        StudentFinal archivo = new StudentFinal();
-        try {
-          archivo.readFile("data.csv");
-        } catch (FileNotFoundException e){
-            System.err.println("El archivo no se encontró: " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println("Error al leer el archivo: " + e.getMessage());
-        } 
+        Reader lector = new Reader();
+        Reader.Student[] estudiantes = lector.getData();
+        for (int i = 0; i < estudiantes.length; i++){
+            Reader.Student x = estudiantes[i];
+            System.out.println(x);
+        }
     }
 }
