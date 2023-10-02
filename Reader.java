@@ -114,10 +114,10 @@ public class Reader{
       this.status = status;
     }
 
-    public String toString(){
-      return "CUI: " + cui + " Email: " + email + " Nombre: " + name + " Apellido Paterno: " + lastNameF
+    public void print(){
+      System.out.println("CUI: " + cui + " Email: " + email + " Nombre: " + name + " Apellido Paterno: " + lastNameF
           + " Apellido Materno: " + lastNameM + " Fecha de Nacimiento: " + dateOfBirth + " Genero: " + gender
-          + " Estado: " + status;
+          + " Estado: " + status);
     }
   }
 }
