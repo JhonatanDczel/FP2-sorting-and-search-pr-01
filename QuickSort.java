@@ -119,6 +119,44 @@ public class QuickSort {
         if (left < j - 1)  dateOfBirth (s, left, j -1);
         if (j + 1< right) dateOfBirth(s, j + 1, right);
     }
+    public static void gender (Reader.Student[] s, int left, int right) {
+        int piv = s[left].getGender();
+        int i = left;
+        int j = right;
+        int aux;
+        while (i < j) {
+            while (s[i].getGender() <= piv && i < j) i++;
+            while (s[j].getGender() > piv) j--;
+            if (i < j) {
+                aux = s[i].getGender();
+                s[i].setGender(s[j].getGender()); 
+                s[j].setGender(aux);
+            }
+        }
+        s[left].setGender(s[j].getGender());
+        s[j].setGender(piv);
+        if (left < j - 1)  gender(s, left, j -1);
+        if (j + 1< right) gender(s, j + 1, right);
+    }
+    public static void status (Reader.Student[] s, int left, int right) {
+        int piv = s[left].getStatus();
+        int i = left;
+        int j = right;
+        int aux;
+        while (i < j) {
+            while (s[i].getStatus() <= piv && i < j) i++;
+            while (s[j].getStatus() > piv) j--;
+            if (i < j) {
+                aux = s[i].getStatus();
+                s[i].setStatus(s[j].getStatus()); 
+                s[j].setStatus(aux);
+            }
+        }
+        s[left].setStatus(s[j].getStatus());
+        s[j].setStatus(piv);
+        if (left < j - 1)  status(s, left, j -1);
+        if (j + 1< right) status(s, j + 1, right);
+    }
     public static boolean smallerThan(String w1, String w2) {
         w1.toUpperCase();
         w2.toUpperCase();
