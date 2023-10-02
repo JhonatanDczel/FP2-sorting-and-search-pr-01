@@ -59,5 +59,25 @@ public class QuickSort {
         if (left < j - 1)  name (s, left, j -1);
         if (j + 1< right) name(s, j + 1, right);
     }
+    public static void lastNameF (Reader.Student[] s, int left, int right) {
+        char piv = s[left].getLastNameF().charAt(0);
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (s[i].getLastNameF().charAt(0) <= piv && i < j) i++;
+            while (s[j].getLastNameF().charAt(0) > piv) j--;
+            if (i < j) {
+                aux = s[i].getLastNameF();
+                s[i].setLastNameF(s[j].getLastNameF()); 
+                s[j].setLastNameF(aux);
+            }
+        }
+        aux = s[left].getLastNameF();
+        s[left].setLastNameF(s[j].getLastNameF());
+        s[j].setLastNameF(aux);
+        if (left < j - 1)  lastNameF (s, left, j -1);
+        if (j + 1< right) lastNameF(s, j + 1, right);
+    }
 
 }
