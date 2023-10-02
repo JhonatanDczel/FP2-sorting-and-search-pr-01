@@ -3,7 +3,7 @@ public class Main{
         Reader lector = new Reader();
         Reader.Student[] students = lector.getData();
         impr(students);
-        QuickSort.email(students, 0, students.length - 1);
+        QuickSort.name(students, 0, students.length - 1);
         impr(students);
 /*
 	    long first, end;
@@ -24,7 +24,7 @@ public class Main{
     public static void impr(Reader.Student[] s) {
         System.out.println("-----------------");
         for (int i = 0; i < s.length; i++){
-            System.out.println(s[i].getEmail());
+            System.out.println(s[i].getName());
         }
     }
 }

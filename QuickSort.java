@@ -39,5 +39,25 @@ public class QuickSort {
         if (left < j - 1)  email(s, left, j -1);
         if (j + 1< right) email(s, j + 1, right);
     }
+    public static void name (Reader.Student[] s, int left, int right) {
+        char piv = s[left].getName().charAt(0);
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (s[i].getName().charAt(0) <= piv && i < j) i++;
+            while (s[j].getName().charAt(0) > piv) j--;
+            if (i < j) {
+                aux = s[i].getName();
+                s[i].setName(s[j].getName()); 
+                s[j].setName(aux);
+            }
+        }
+        aux = s[left].getName();
+        s[left].setName(s[j].getName());
+        s[j].setName(aux);
+        if (left < j - 1)  name (s, left, j -1);
+        if (j + 1< right) name(s, j + 1, right);
+    }
 
 }
