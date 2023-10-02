@@ -1,6 +1,6 @@
 import java.io.*;
 public class QuickSort {
-    public static void Cui (Reader.Student[] s, int left, int right) {
+    public static void cui (Reader.Student[] s, int left, int right) {
         int piv = s[left].getCui();
         int i = left;
         int j = right;
@@ -16,9 +16,28 @@ public class QuickSort {
         }
         s[left].setCui(s[j].getCui());
         s[j].setCui(piv);
-        if (left < j - 1)  Cui(s, left, j -1);
-        if (j + 1< right) Cui(s, j + 1, right);
-        
+        if (left < j - 1)  cui(s, left, j -1);
+        if (j + 1< right) cui(s, j + 1, right);
+    }
+    public static void email (Reader.Student[] s, int left, int right) {
+        char piv = s[left].getEmail().charAt(0);
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (s[i].getEmail().charAt(0) <= piv && i < j) i++;
+            while (s[j].getEmail().charAt(0) > piv) j--;
+            if (i < j) {
+                aux = s[i].getEmail();
+                s[i].setEmail(s[j].getEmail()); 
+                s[j].setEmail(aux);
+            }
+        }
+        aux = s[left].getEmail();
+        s[left].setEmail(s[j].getEmail());
+        s[j].setEmail(aux);
+        if (left < j - 1)  email(s, left, j -1);
+        if (j + 1< right) email(s, j + 1, right);
     }
 
 }
