@@ -23,11 +23,11 @@ public class Reader{
         student.setCui(Integer.parseInt(parts[0]));
         student.setEmail(parts[1]);
         student.setName(parts[2]);
-        student.setLastNameF(parts[3]);
-        student.setLastNameM(parts[4]);
+        student.setLastNameM(parts[3]);
+        student.setLastNameF(parts[4]);
         student.setDateOfBirth(parts[5]);
-        student.setGender(parts[6]);
-        student.setStatus(parts[7]);
+        student.setGender(Integer.parseInt(parts[6]));
+        student.setStatus(Integer.parseInt(parts[7]));
         students.add(student);
       }
     }catch (Exception exception){
@@ -47,8 +47,8 @@ public class Reader{
     private String lastNameF;
     private String lastNameM;
     private String dateOfBirth;
-    private String gender;
-    private String status;
+    private int gender;
+    private int status;
 
     public int getCui(){
       return cui;
@@ -98,26 +98,31 @@ public class Reader{
       this.dateOfBirth = dateOfBirth;
     }
 
-    public String getGender(){
+    public int getGender(){
       return gender;
     }
 
-    public void setGender(String gender){
+    public void setGender(int gender){
       this.gender = gender;
     }
 
-    public String getStatus(){
+    public int getStatus(){
       return status;
     }
 
-    public void setStatus(String status){
+    public void setStatus(int status){
       this.status = status;
     }
 
     public void print(){
-      System.out.println("CUI: " + cui + " Email: " + email + " Nombre: " + name + " Apellido Paterno: " + lastNameF
-          + " Apellido Materno: " + lastNameM + " Fecha de Nacimiento: " + dateOfBirth + " Genero: " + gender
-          + " Estado: " + status);
+      System.out.println("CUI: " + cui + 
+              " Email: " + email  +
+              " Nombre: " + name  + "\t" +
+              " A. Pat: " + lastNameF +
+              " A. Mat: " + lastNameM  + 
+              " Fecha de Nacimiento: " + dateOfBirth  + 
+              " Genero: " + gender +
+              " Estado: " + status);
     }
   }
 }
