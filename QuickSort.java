@@ -20,13 +20,13 @@ public class QuickSort {
         if (j + 1< right) cui(s, j + 1, right);
     }
     public static void email (Reader.Student[] s, int left, int right) {
-        char piv = s[left].getEmail().charAt(0);
+        String piv = s[left].getEmail();
         int i = left;
         int j = right;
         String aux;
         while (i < j) {
-            while (s[i].getEmail().charAt(0) <= piv && i < j) i++;
-            while (s[j].getEmail().charAt(0) > piv) j--;
+            while (smallerThan(s[i].getEmail(), piv) && i < j) i++;
+            while (!smallerThan(s[j].getEmail(), piv)) j--;
             if (i < j) {
                 aux = s[i].getEmail();
                 s[i].setEmail(s[j].getEmail()); 
@@ -40,13 +40,13 @@ public class QuickSort {
         if (j + 1< right) email(s, j + 1, right);
     }
     public static void name (Reader.Student[] s, int left, int right) {
-        char piv = s[left].getName().charAt(0);
+        String piv = s[left].getName();
         int i = left;
         int j = right;
         String aux;
         while (i < j) {
-            while (s[i].getName().charAt(0) <= piv && i < j) i++;
-            while (s[j].getName().charAt(0) > piv) j--;
+            while (smallerThan(s[i].getName(), piv) && i < j) i++;
+            while (!smallerThan(s[j].getName(), piv)) j--;
             if (i < j) {
                 aux = s[i].getName();
                 s[i].setName(s[j].getName()); 
@@ -60,13 +60,13 @@ public class QuickSort {
         if (j + 1< right) name(s, j + 1, right);
     }
     public static void lastNameF (Reader.Student[] s, int left, int right) {
-        char piv = s[left].getLastNameF().charAt(0);
+        String piv = s[left].getLastNameF();
         int i = left;
         int j = right;
         String aux;
         while (i < j) {
-            while (s[i].getLastNameF().charAt(0) <= piv && i < j) i++;
-            while (s[j].getLastNameF().charAt(0) > piv) j--;
+            while (smallerThan(s[i].getLastNameF(), piv) && i < j) i++;
+            while (!smallerThan(s[j].getLastNameF(), piv)) j--;
             if (i < j) {
                 aux = s[i].getLastNameF();
                 s[i].setLastNameF(s[j].getLastNameF()); 
@@ -79,5 +79,51 @@ public class QuickSort {
         if (left < j - 1)  lastNameF (s, left, j -1);
         if (j + 1< right) lastNameF(s, j + 1, right);
     }
+    public static void lastNameM (Reader.Student[] s, int left, int right) {
+        String piv = s[left].getLastNameM();
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (smallerThan(s[i].getLastNameM(), piv) && i < j) i++;
+            while (!smallerThan(s[j].getLastNameM(), piv)) j--;
+            if (i < j) {
+                aux = s[i].getLastNameM();
+                s[i].setLastNameM(s[j].getLastNameM()); 
+                s[j].setLastNameM(aux);
+            }
+        }
+        aux = s[left].getLastNameM();
+        s[left].setLastNameM(s[j].getLastNameM());
+        s[j].setLastNameM(aux);
+        if (left < j - 1)  lastNameM (s, left, j -1);
+        if (j + 1< right) lastNameM(s, j + 1, right);
+    }
+    public static void dateOfBirth (Reader.Student[] s, int left, int right) {
+        String piv = s[left].getDateOfBirth();
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (smallerThan(s[i].getDateOfBirth(), piv) && i < j) i++;
+            while (!smallerThan(s[j].getDateOfBirth(), piv)) j--;
+            if (i < j) {
+                aux = s[i].getDateOfBirth();
+                s[i].setDateOfBirth(s[j].getDateOfBirth()); 
+                s[j].setDateOfBirth(aux);
+            }
+        }
+        aux = s[left].getDateOfBirth();
+        s[left].setDateOfBirth(s[j].getDateOfBirth());
+        s[j].setDateOfBirth(aux);
+        if (left < j - 1)  dateOfBirth (s, left, j -1);
+        if (j + 1< right) dateOfBirth(s, j + 1, right);
+    }
+    public static boolean smallerThan(String w1, String w2) {
+        w1.toUpperCase();
+        w2.toUpperCase();
+        if (w1.compareTo(w2) <= 0) return true;
+        return false;
 
+    }
 }
