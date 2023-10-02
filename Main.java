@@ -2,7 +2,6 @@ public class Main{
     public static void main(String[] args){
         Reader lector = new Reader();
         Reader.Student[] students = lector.getData();
-        impr(students);
 	long first, end;
 	
 	first = System.nanoTime();
@@ -12,7 +11,7 @@ public class Main{
 	System.out.println("\nTiempo: " + (end - first));
 	
 	first = System.nanoTime();
-	Insertion.insertionCui(students);
+	Insertion.insertionStatus(students);
 	end = System.nanoTime();
 	impr(students);
 	System.out.println("\nTiempo: " + (end - first));
