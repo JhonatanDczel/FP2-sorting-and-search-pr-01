@@ -1,3 +1,5 @@
+package prac01.algorithmSortAndSearch;
+import prac01.reader.*;
 import java.io.*;
 public class QuickSort {
     public static void cui (Reader.Student[] s, int left, int right) {

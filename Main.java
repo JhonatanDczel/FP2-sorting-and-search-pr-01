@@ -1,3 +1,5 @@
+import algorithmSortAndSearch.*;
+import reader.*;
 public class Main{
     public static void main(String[] args){
         Reader lector = new Reader();
