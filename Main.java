@@ -4,9 +4,11 @@ public class Main{
     public static void main(String[] args){
         Reader lector = new Reader();
         Reader.Student[] students = lector.getData();
+        QuickSort.email(students, 0, students.length - 1);
         impr(students);
-        QuickSort.status(students, 0, students.length - 1);
-        impr(students);
+//        int idx = RecursiveBinarySearch.email(students,"jgarciafernandez@unsa.edu.pe", 0, students.length - 1);
+//        System.out.println(idx);
+//        System.out.println(students[idx]);
 /*
 	    long first, end;
 	
@@ -26,7 +28,7 @@ public class Main{
     public static void impr(Reader.Student[] s) {
         System.out.println("-----------------");
         for (int i = 0; i < s.length; i++){
-            System.out.println(s[i].getStatus());
+            System.out.println(s[i].getEmail());
         }
     }
 }

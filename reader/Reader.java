@@ -25,8 +25,8 @@ public class Reader{
         student.setCui(Integer.parseInt(parts[0]));
         student.setEmail(parts[1]);
         student.setName(parts[2]);
-        student.setLastNameM(parts[3]);
-        student.setLastNameF(parts[4]);
+        student.setLastNameF(parts[3]);
+        student.setLastNameM(parts[4]);
         student.setDateOfBirth(parts[5]);
         student.setGender(Integer.parseInt(parts[6]));
         student.setStatus(Integer.parseInt(parts[7]));
@@ -125,6 +125,18 @@ public class Reader{
               " Fecha de Nacimiento: " + dateOfBirth  + 
               " Genero: " + gender +
               " Estado: " + status);
+    }
+    @Override
+    public String toString() {
+      return ("CUI: " + cui + 
+              " Email: " + email  +
+              " Nombre: " + name  + "\t" +
+              " A. Pat: " + lastNameF +
+              " A. Mat: " + lastNameM  + 
+              " Fecha de Nacimiento: " + dateOfBirth  + 
+              " Genero: " + gender +
+              " Estado: " + status);
+      
     }
   }
 }

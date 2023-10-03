@@ -14,18 +14,19 @@ public class QuickSort {
         int piv = s[left].getCui();
         int i = left;
         int j = right;
-        int aux;
+        Reader.Student aux;
         while (i < j) {
             while (s[i].getCui() <= piv && i < j) i++;
             while (s[j].getCui() > piv) j--;
             if (i < j) {
-                aux = s[i].getCui();
-                s[i].setCui(s[j].getCui()); 
-                s[j].setCui(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        s[left].setCui(s[j].getCui());
-        s[j].setCui(piv);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  cui(s, left, j -1);
         if (j + 1< right) cui(s, j + 1, right);
     }
@@ -33,19 +34,19 @@ public class QuickSort {
         String piv = s[left].getEmail();
         int i = left;
         int j = right;
-        String aux;
+        Reader.Student aux;
         while (i < j) {
             while (smallerThan(s[i].getEmail(), piv) && i < j) i++;
             while (!smallerThan(s[j].getEmail(), piv)) j--;
             if (i < j) {
-                aux = s[i].getEmail();
-                s[i].setEmail(s[j].getEmail()); 
-                s[j].setEmail(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        aux = s[left].getEmail();
-        s[left].setEmail(s[j].getEmail());
-        s[j].setEmail(aux);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  email(s, left, j -1);
         if (j + 1< right) email(s, j + 1, right);
     }
@@ -53,19 +54,19 @@ public class QuickSort {
         String piv = s[left].getName();
         int i = left;
         int j = right;
-        String aux;
+        Reader.Student aux;
         while (i < j) {
             while (smallerThan(s[i].getName(), piv) && i < j) i++;
             while (!smallerThan(s[j].getName(), piv)) j--;
             if (i < j) {
-                aux = s[i].getName();
-                s[i].setName(s[j].getName()); 
-                s[j].setName(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        aux = s[left].getName();
-        s[left].setName(s[j].getName());
-        s[j].setName(aux);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  name (s, left, j -1);
         if (j + 1< right) name(s, j + 1, right);
     }
@@ -73,19 +74,19 @@ public class QuickSort {
         String piv = s[left].getLastNameF();
         int i = left;
         int j = right;
-        String aux;
+        Reader.Student aux;
         while (i < j) {
             while (smallerThan(s[i].getLastNameF(), piv) && i < j) i++;
             while (!smallerThan(s[j].getLastNameF(), piv)) j--;
             if (i < j) {
-                aux = s[i].getLastNameF();
-                s[i].setLastNameF(s[j].getLastNameF()); 
-                s[j].setLastNameF(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        aux = s[left].getLastNameF();
-        s[left].setLastNameF(s[j].getLastNameF());
-        s[j].setLastNameF(aux);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  lastNameF (s, left, j -1);
         if (j + 1< right) lastNameF(s, j + 1, right);
     }
@@ -93,19 +94,19 @@ public class QuickSort {
         String piv = s[left].getLastNameM();
         int i = left;
         int j = right;
-        String aux;
+        Reader.Student aux;
         while (i < j) {
             while (smallerThan(s[i].getLastNameM(), piv) && i < j) i++;
             while (!smallerThan(s[j].getLastNameM(), piv)) j--;
             if (i < j) {
-                aux = s[i].getLastNameM();
-                s[i].setLastNameM(s[j].getLastNameM()); 
-                s[j].setLastNameM(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        aux = s[left].getLastNameM();
-        s[left].setLastNameM(s[j].getLastNameM());
-        s[j].setLastNameM(aux);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  lastNameM (s, left, j -1);
         if (j + 1< right) lastNameM(s, j + 1, right);
     }
@@ -113,19 +114,19 @@ public class QuickSort {
         String piv = s[left].getDateOfBirth();
         int i = left;
         int j = right;
-        String aux;
+        Reader.Student aux;
         while (i < j) {
             while (smallerThan(s[i].getDateOfBirth(), piv) && i < j) i++;
             while (!smallerThan(s[j].getDateOfBirth(), piv)) j--;
             if (i < j) {
-                aux = s[i].getDateOfBirth();
-                s[i].setDateOfBirth(s[j].getDateOfBirth()); 
-                s[j].setDateOfBirth(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        aux = s[left].getDateOfBirth();
-        s[left].setDateOfBirth(s[j].getDateOfBirth());
-        s[j].setDateOfBirth(aux);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  dateOfBirth (s, left, j -1);
         if (j + 1< right) dateOfBirth(s, j + 1, right);
     }
@@ -133,18 +134,19 @@ public class QuickSort {
         int piv = s[left].getGender();
         int i = left;
         int j = right;
-        int aux;
+        Reader.Student aux;
         while (i < j) {
             while (s[i].getGender() <= piv && i < j) i++;
             while (s[j].getGender() > piv) j--;
             if (i < j) {
-                aux = s[i].getGender();
-                s[i].setGender(s[j].getGender()); 
-                s[j].setGender(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        s[left].setGender(s[j].getGender());
-        s[j].setGender(piv);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  gender(s, left, j -1);
         if (j + 1< right) gender(s, j + 1, right);
     }
@@ -152,18 +154,19 @@ public class QuickSort {
         int piv = s[left].getStatus();
         int i = left;
         int j = right;
-        int aux;
+        Reader.Student aux;
         while (i < j) {
             while (s[i].getStatus() <= piv && i < j) i++;
             while (s[j].getStatus() > piv) j--;
             if (i < j) {
-                aux = s[i].getStatus();
-                s[i].setStatus(s[j].getStatus()); 
-                s[j].setStatus(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        s[left].setStatus(s[j].getStatus());
-        s[j].setStatus(piv);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  status(s, left, j -1);
         if (j + 1< right) status(s, j + 1, right);
     }
