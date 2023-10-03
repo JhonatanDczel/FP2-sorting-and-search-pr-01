@@ -126,5 +126,17 @@ public class Reader{
               " Genero: " + gender +
               " Estado: " + status);
     }
+    @Override
+    public String toString() {
+      return ("CUI: " + cui + 
+              " Email: " + email  +
+              " Nombre: " + name  + "\t" +
+              " A. Pat: " + lastNameF +
+              " A. Mat: " + lastNameM  + 
+              " Fecha de Nacimiento: " + dateOfBirth  + 
+              " Genero: " + gender +
+              " Estado: " + status);
+      
+    }
   }
 }
