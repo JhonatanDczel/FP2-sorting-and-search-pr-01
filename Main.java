@@ -4,9 +4,10 @@ public class Main{
     public static void main(String[] args){
         Reader lector = new Reader();
         Reader.Student[] students = lector.getData();
-        impr(students);
-        QuickSort.status(students, 0, students.length - 1);
-        impr(students);
+        QuickSort.cui(students, 0, students.length - 1);
+        int idx = IterativeBinarySearch.cui(students, 24345678);
+        System.out.println(idx);
+        System.out.println(students[idx]);
 /*
 	    long first, end;
 	
