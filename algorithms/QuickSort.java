@@ -1,3 +1,6 @@
+package algorithms;
+
+import reader.Reader;
 import java.io.*;
 public class QuickSort {
     public static void cui (Reader.Student[] s, int left, int right) {

@@ -23,6 +23,7 @@ gnuplot <<-EOF
 	set terminal pngcairo enhanced
 	set output "./imgs/$outputFile"
 
+	set title "$1" textcolor rgb "white" font "helvetica,12"
 	set key left box textcolor "white" font "helvetica,12"
 	set object 1 rectangle from screen 0,0 to screen 1,1 behind noclip fc rgb "#32363d" fillstyle solid 1.0
 	set border lc rgb "white" lw 2
