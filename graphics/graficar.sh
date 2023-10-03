@@ -35,4 +35,5 @@ gnuplot <<-EOF
 	$plotLine
 EOF
 
+xdg-open "./imgs/$outputFile"
 echo "El gráfico se ha generado como $outputFile"
