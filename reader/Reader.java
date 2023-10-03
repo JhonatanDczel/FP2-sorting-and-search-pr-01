@@ -1,4 +1,5 @@
-package prac01.reader;
+package reader;
+
 import java.io.*;
 import java.util.*;
 public class Reader{

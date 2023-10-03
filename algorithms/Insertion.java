@@ -1,3 +1,7 @@
+package algorithms;
+
+import reader.Reader;
+
 public class Insertion{
   public static void insertionCui(Reader.Student[] classmates){
     int lowest;
