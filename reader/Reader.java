@@ -17,7 +17,7 @@ public class Reader{
     String line = "";
     String[] parts;
     try {
-      FileReader fileReader = new FileReader("data.csv");
+      FileReader fileReader = new FileReader("./reader/data.csv");
       reader = new BufferedReader(fileReader);
       while ((line = reader.readLine()) != null) {
         parts = line.split(",");
