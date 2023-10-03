@@ -33,19 +33,19 @@ public class QuickSort {
         String piv = s[left].getEmail();
         int i = left;
         int j = right;
-        String aux;
+        Reader.Student aux;
         while (i < j) {
             while (smallerThan(s[i].getEmail(), piv) && i < j) i++;
             while (!smallerThan(s[j].getEmail(), piv)) j--;
             if (i < j) {
-                aux = s[i].getEmail();
-                s[i].setEmail(s[j].getEmail()); 
-                s[j].setEmail(aux);
+                aux = s[i];
+                s[i] = s[j]; 
+                s[j] = aux;
             }
         }
-        aux = s[left].getEmail();
-        s[left].setEmail(s[j].getEmail());
-        s[j].setEmail(aux);
+        aux = s[left];
+        s[left] = s[j];
+        s[j] = (aux);
         if (left < j - 1)  email(s, left, j -1);
         if (j + 1< right) email(s, j + 1, right);
     }
