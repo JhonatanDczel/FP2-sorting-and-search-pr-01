@@ -3,6 +3,13 @@ package algorithms;
 import reader.Reader;
 import java.io.*;
 public class QuickSort {
+
+
+
+  // Importante: Se debe de usar Quicksort con el parametro rigth de este manera:
+  // rigth = array.length - 1 => Se debe poner la longitud del array menos 1
+  
+
     public static void cui (Reader.Student[] s, int left, int right) {
         int piv = s[left].getCui();
         int i = left;
