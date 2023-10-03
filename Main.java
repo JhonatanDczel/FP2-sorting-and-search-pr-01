@@ -5,7 +5,7 @@ public class Main{
         Reader lector = new Reader();
         Reader.Student[] students = lector.getData();
         QuickSort.email(students, 0, students.length - 1);
-        int idx = IterativeBinarySearch.email(students,"mmartinezlopez@unsa.edu.pe");
+        int idx = RecursiveBinarySearch.email(students,"jgarciafernandez@unsa.edu.pe", 0, students.length - 1);
         System.out.println(idx);
         System.out.println(students[idx]);
 /*
