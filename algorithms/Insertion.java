@@ -90,7 +90,7 @@ public class Insertion{
     for(int i = 0; i < classmates.length; i++){
       lowest = i;
       pivot = classmates[i];
-      while((lowest > 0) && (classmates[lowest - 1].getGender().charAt(0) > pivot.getGender().charAt(0))){
+      while((lowest > 0) && (classmates[lowest - 1].getGender() > pivot.getGender())){
         classmates[lowest] = classmates[lowest - 1];
         lowest--;
       }
@@ -105,7 +105,7 @@ public class Insertion{
     for(int i = 0; i < classmates.length; i++){
       lowest = i;
       pivot = classmates[i];
-      while((lowest > 0) && (classmates[lowest - 1].getStatus().charAt(0) > pivot.getStatus().charAt(0))){
+      while((lowest > 0) && (classmates[lowest - 1].getStatus() > pivot.getStatus())){
         classmates[lowest] = classmates[lowest - 1];
         lowest--;
       }
@@ -134,23 +134,9 @@ public class Insertion{
     return false;
   }
   private static boolean compareString(String word1, String word2){
-    //Suponemos que los datos no tienen mayusculas donde no deben. Además este método nos
-    //sirve para ordenar según nacimiento, pues si convertimos a número, no cumple todos los casos
-    int length = word1.length();
-    if(length > word2.length()){
-      length = word2.length();	
-    }
-    int i = 0;
-    while(i < length){
-      if(word1.charAt(i) == word2.charAt(i)){
-	i++;
-      }else{
-	if(word1.charAt(i) > word2.charAt(i)){
-	  return true;
-	}
-	return false;
-      }
-    }
-    return false;
+    word1 = word1.toUpperCase();
+    word2 = word2.toUpperCase();
+    if (word1.compareTo(word2) <= 0) return false;
+    return true;
   }
 }
