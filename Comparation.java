@@ -70,6 +70,7 @@ public class Comparation{
       o1 = opcion;
 
       switch (opcion) {
+//========================case 1
         case 1:
           System.out.println("\n=======Ordenar por:========");
           System.out.println("1. cui");
@@ -120,6 +121,7 @@ public class Comparation{
           }
           //System.exit(0);
           break;
+//========================case 2
         case 2:
           System.out.println("\n=======Ordenar por:========");
           System.out.println("1. cui");
@@ -170,6 +172,7 @@ public class Comparation{
           }
           System.exit(0);
           break;
+//========================case 3
         case 3:
           System.out.println("\n=======Buscar por========");
           System.out.println("1. cui");
@@ -243,8 +246,8 @@ public class Comparation{
           }
           System.exit(0);
           break;
+//========================case 4
         case 4:
-      /*    
           System.out.println("\n=======Buscar por========");
           System.out.println("1. cui");
           System.out.println("2. email");
@@ -258,7 +261,7 @@ public class Comparation{
               QuickSort.cui(s, 0, s.length - 1);
               System.out.println("Ingrese el valor a buscar");
               ri = sc.nextInt();
-              ri = IterativeBinarySearch.cui(s, ri, 0, s.length - 1);
+              ri = IterativeBinarySearch.cui(s, ri);
               if (ri != -1) System.out.println(s[ri]);
               else System.out.println("No encontrado");
               break;
@@ -267,7 +270,7 @@ public class Comparation{
               System.out.println("Ingrese el valor a buscar");
               sc.nextLine();
               rs = sc.nextLine();
-              ri = IterativeBinarySearch.email(s, rs, 0, s.length - 1);
+              ri = IterativeBinarySearch.email(s, rs);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
 
@@ -277,7 +280,7 @@ public class Comparation{
               System.out.println("Ingrese el valor a buscar");
               sc.nextLine();
               rs = sc.nextLine();
-              ri = IterativeBinarySearch.name(s, rs, 0, s.length - 1);
+              ri = IterativeBinarySearch.name(s, rs);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
          break;
@@ -286,7 +289,7 @@ public class Comparation{
               System.out.println("Ingrese el valor a buscar");
               sc.nextLine();
               rs = sc.nextLine();
-              ri = IterativeBinarySearch.lastNameF(s, rs, 0, s.length - 1);
+              ri = IterativeBinarySearch.lastNameF(s, rs);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
 
@@ -296,7 +299,7 @@ public class Comparation{
               System.out.println("Ingrese el valor a buscar");
               sc.nextLine();
               rs = sc.nextLine();
-              ri = IterativeBinarySearch.lastNameM(s, rs, 0, s.length - 1);
+              ri = IterativeBinarySearch.lastNameM(s, rs);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
 
@@ -306,7 +309,7 @@ public class Comparation{
               System.out.println("Ingrese el valor a buscar");
               sc.nextLine();
               rs = sc.nextLine();
-              ri = IterativeBinarySearch.dateOfBirth(s, rs, 0, s.length - 1);
+              ri = IterativeBinarySearch.dateOfBirth(s, rs);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
 
@@ -315,16 +318,16 @@ public class Comparation{
               System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
           }
           System.exit(0);
-<<<<<<< HEAD
           break;
-          */
-          break;
+//========================case 5
         case 5:
           break;
+//========================case 6
         case 6:
           System.out.println("Saliendo del programa...");
           System.exit(0);
           break;
+//========================case 7
         case 7:
           Test.runAlgorithm();
           break;
