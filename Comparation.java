@@ -12,13 +12,13 @@ public class Comparation{
 
   public static void main(String[] args){
     getTestCases();
-    menu();
-  private static Scanner sc = new Scanner(System.in);
-  private static int[] casosDePrueba = new int[100];
-
-  public static void main(String[] args){
-    generarCasosDePrueba();
     menu(students);
+  }
+
+  public static void printStudents(Reader.Student [] s) {
+    for (int i = 0; i < s.length; i++){
+      System.out.println(s[i]);
+    }
   }
 
   public static void getTestCases(){
@@ -26,7 +26,7 @@ public class Comparation{
     for(int i = 0; i < 100; i++){
       testCases[i] = (int) ((i / 100.0) * datos);
       if(testCases[i] == 0)
-        testCases[i] = 2;
+        testCases[i] = 1;
     }
   }
 
@@ -52,8 +52,9 @@ public class Comparation{
     }
   }
 
-  public static void menu(){
   public static void menu(Reader.Student[] s){
+    int ri;
+    String rs;
     while (true) {
       System.out.println("\n=======Menu Principal========");
       System.out.println("1. Ordenamiento por Inserción");
@@ -63,40 +64,8 @@ public class Comparation{
       System.out.println("5. Comparar Rendimientos");
       System.out.println("6. Salir");
       System.out.print("Seleccione una opción: ");
-      int option = sc.nextInt();
-      runAlgorithm(option);
-    }
-  }
+      int opcion = sc.nextInt();
 
-
-  public class Test{
-    static private Reader.Student[] sujetosPrueba = Arrays.copyOf(students, students.length);
-    static public void runAlgorithm(){
-      quicksort();
-    }
-    static public void quicksort(){
-      String data = "";
-      for(int i = 0; i < 100; i++){
-        Reader.Student[] muestra = Arrays.copyOf(sujetosPrueba, testCases[i]);
-        long startTime = System.nanoTime();
-        QuickSort.cui(muestra, 0, muestra.length - 1);
-        long endTime = System.nanoTime();
-        String time = Long.toString(endTime - startTime);
-        data = data + "\n" + String.valueOf(testCases[i]) + "\t" + time;
-      }
-      try (BufferedWriter bw = new BufferedWriter(new FileWriter("./graphics/input/data.dat"))) {
-        bw.write(data);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-      try {
-          String comando = "./graphics/graficar.sh \"Grafica QuickSort CUI\" ./graphics/input/data.dat";
-          ProcessBuilder builder = new ProcessBuilder();
-          builder.command("sh", "-c", comando);
-          Process proceso = builder.start();
-      } catch (IOException e) {
-          e.printStackTrace();
-          System.out.println("fallo");
       switch (opcion) {
         case 1:
           System.out.println("\n=======Ordenar por:========");
@@ -197,8 +166,151 @@ public class Comparation{
           System.exit(0);
           break;
         case 3:
+          System.out.println("\n=======Buscar por========");
+          System.out.println("1. cui");
+          System.out.println("2. email");
+          System.out.println("3. name");
+          System.out.println("4. apellido paterno");
+          System.out.println("5. apellido materno");
+          System.out.println("6. F. nacimiento");
+          opcion = sc.nextInt();
+          switch (opcion) {
+            case 1:
+              QuickSort.cui(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              ri = sc.nextInt();
+              ri = RecursiveBinarySearch.cui(s, ri, 0, s.length - 1);
+              if (ri != -1) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+              break;
+            case 2:
+              QuickSort.email(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = RecursiveBinarySearch.email(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            case 3:
+              QuickSort.name(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = RecursiveBinarySearch.name(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+         break;
+            case 4:
+              QuickSort.lastNameF(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = RecursiveBinarySearch.lastNameF(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            case 5:
+              QuickSort.lastNameM(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = RecursiveBinarySearch.lastNameM(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            case 6:
+              QuickSort.dateOfBirth(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = RecursiveBinarySearch.dateOfBirth(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            default:
+              System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+          }
+          System.exit(0);
           break;
         case 4:
+          
+         /* System.out.println("\n=======Buscar por========");
+          System.out.println("1. cui");
+          System.out.println("2. email");
+          System.out.println("3. name");
+          System.out.println("4. apellido paterno");
+          System.out.println("5. apellido materno");
+          System.out.println("6. F. nacimiento");
+          opcion = sc.nextInt();
+          switch (opcion) {
+            case 1:
+              QuickSort.cui(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              ri = sc.nextInt();
+              ri = IterativeBinarySearch.cui(s, ri, 0, s.length - 1);
+              if (ri != -1) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+              break;
+            case 2:
+              QuickSort.email(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = IterativeBinarySearch.email(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            case 3:
+              QuickSort.name(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = IterativeBinarySearch.name(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+         break;
+            case 4:
+              QuickSort.lastNameF(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = IterativeBinarySearch.lastNameF(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            case 5:
+              QuickSort.lastNameM(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = IterativeBinarySearch.lastNameM(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            case 6:
+              QuickSort.dateOfBirth(s, 0, s.length - 1);
+              System.out.println("Ingrese el valor a buscar");
+              sc.nextLine();
+              rs = sc.nextLine();
+              ri = IterativeBinarySearch.dateOfBirth(s, rs, 0, s.length - 1);
+              if (ri != -1 ) System.out.println(s[ri]);
+              else System.out.println("No encontrado");
+
+              break;
+            default:
+              System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+          }
+          System.exit(0);
+          break;
+          */
           break;
         case 5:
           break;
@@ -206,16 +318,46 @@ public class Comparation{
           System.out.println("Saliendo del programa...");
           System.exit(0);
           break;
+        case 7:
+          Test.runAlgorithm();
+          break;
         default:
           System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
       }
     }
   }
-  public static void printStudents(Reader.Student [] s) {
-    for (int i = 0; i < s.length; i++){
-      System.out.println(s[i]);
+
+
+  public class Test{
+    static private Reader.Student[] sujetosPrueba = Arrays.copyOf(students, students.length);
+    static public void runAlgorithm(){
+      quicksort();
+    }
+    static public void quicksort(){
+      String data = "";
+      for(int i = 0; i < 100; i++){
+        Reader.Student[] muestra = Arrays.copyOf(sujetosPrueba, testCases[i]);
+        long startTime = System.nanoTime();
+        QuickSort.cui(muestra, 0, muestra.length - 1);
+        long endTime = System.nanoTime();
+        String time = Long.toString(endTime - startTime);
+        data = data + "\n" + String.valueOf(testCases[i]) + "\t" + time;
+      }
+      try (BufferedWriter bw = new BufferedWriter(new FileWriter("./graphics/input/data.dat"))) {
+        bw.write(data);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      try {
+          String comando = "./graphics/graficar.sh \"Grafica QuickSort CUI\" ./graphics/input/data.dat";
+          ProcessBuilder builder = new ProcessBuilder();
+          builder.command("sh", "-c", comando);
+          Process proceso = builder.start();
+      } catch (IOException e) {
+          e.printStackTrace();
+          System.out.println("fallo");
+      }
     }
 
   }
-
 }
