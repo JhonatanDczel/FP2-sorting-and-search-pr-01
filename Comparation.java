@@ -64,35 +64,42 @@ public class Comparation{
           o2 = opcion;
           switch (opcion) {
             case 1:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.cui(s);
               printStudents(s);
-              Test.runAlgorithm(o1, o2);
               break;
             case 2:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.email(s);
               printStudents(s);
               break;
             case 3:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.name(s);
               printStudents(s);
               break;
             case 4:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.lastNameF(s);
               printStudents(s);
               break;
             case 5:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.lastNameM(s);
               printStudents(s);
               break;
             case 6:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.dateOfBirth(s);
               printStudents(s);
               break;
             case 7:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.gender(s);
               printStudents(s);
               break;
             case 8:
+              Test.runAlgorithm(o1, o2);
               InsertionSort.status(s);
               printStudents(s);
               break;
@@ -116,34 +123,42 @@ public class Comparation{
           o2 = opcion;
           switch (opcion) {
             case 1:
+              Test.runAlgorithm(o1, o2);
               QuickSort.cui(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 2:
+              Test.runAlgorithm(o1, o2);
               QuickSort.email(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 3:
+              Test.runAlgorithm(o1, o2);
               QuickSort.name(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 4:
+              Test.runAlgorithm(o1, o2);
               QuickSort.lastNameF(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 5:
+              Test.runAlgorithm(o1, o2);
               QuickSort.lastNameM(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 6:
+              Test.runAlgorithm(o1, o2);
               QuickSort.dateOfBirth(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 7:
+              Test.runAlgorithm(o1, o2);
               QuickSort.gender(s, 0, s.length - 1);
               printStudents(s);
               break;
             case 8:
+              Test.runAlgorithm(o1, o2);
               QuickSort.status(s, 0, s.length - 1);
               printStudents(s);
               break;
@@ -302,6 +317,7 @@ public class Comparation{
           break;
 //========================case 5
         case 5:
+          Test.compareAlgorithm();
           break;
 //========================case 6
         case 6:
@@ -392,6 +408,8 @@ public class Comparation{
     static public void runAlgorithm(int o1, int o2){
       String data = "";
       for(int i = 0; i < 100; i++){
+        if(i == 0)
+          continue;
         Reader.Student[] muestra = Arrays.copyOf(sujetosPrueba, testCases[i]);
         long startTime = System.nanoTime();
         selectUser(o1, o2, muestra);
@@ -405,6 +423,50 @@ public class Comparation{
         e.printStackTrace();
       }
       String comando = "./graphics/graficar.sh \"" + name + "\" ./graphics/input/data.dat";
+      try {
+          ProcessBuilder builder = new ProcessBuilder();
+          builder.command("sh", "-c", comando);
+          Process proceso = builder.start();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+    }
+
+    static public void compareAlgorithm(){
+      String data1 = "";
+      String data2 = "";
+      for(int i = 0; i < 100; i++){
+        if(i == 0)
+          continue;
+        Reader.Student[] muestra1 = Arrays.copyOf(sujetosPrueba, testCases[i]);
+        Reader.Student[] muestra2 = Arrays.copyOf(muestra1, muestra1.length);
+        long startTime1 = System.nanoTime();
+        selectUser(1, 6, muestra1);
+        long endTime1 = System.nanoTime();
+        String time1 = Long.toString(endTime1 - startTime1);
+        data1 = data1 + "\n" + String.valueOf(testCases[i]) + "\t" + time1;
+
+        long startTime2 = System.nanoTime();
+        selectUser(2, 6, muestra2);
+        long endTime2 = System.nanoTime();
+        String time2 = Long.toString(endTime2 - startTime2);
+        data2 = data2 + "\n" + String.valueOf(testCases[i]) + "\t" + time2;
+      }
+      String file1 = "./graphics/input/InsertionSort.dat";
+      try (BufferedWriter bw = new BufferedWriter(new FileWriter(file1))) {
+        bw.write(data1);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      String file2 = "./graphics/input/QuickSort.dat";
+      try (BufferedWriter bw = new BufferedWriter(new FileWriter(file2))) {
+        bw.write(data2);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      String comando = "./graphics/graficar.sh \"Comparacion de algoritmos\" " + file1 + " " + file2;
       try {
           ProcessBuilder builder = new ProcessBuilder();
           builder.command("sh", "-c", comando);
