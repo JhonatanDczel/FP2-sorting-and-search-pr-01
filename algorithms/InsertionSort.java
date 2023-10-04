@@ -9,7 +9,7 @@ public class InsertionSort{
     for(int i = 1; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && classmates[j].getCui() > pivot.getCui()){
+      while(j >= 0 && classmates[j].getCui() > pivot.getCui()){
 	classmates[j + 1] = classmates[j];
 	j--;
       }
@@ -22,7 +22,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && compareString(classmates[j].getEmail(), pivot.getEmail())){
+      while(j >= 0 && compareString(classmates[j].getEmail(), pivot.getEmail())){
         classmates[j + 1] = classmates[j];
         j--;
       }
@@ -35,7 +35,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && compareString(classmates[j].getName(), pivot.getName())){
+      while(j >= 0 && compareString(classmates[j].getName(), pivot.getName())){
 	classmates[j + 1] = classmates[j];
 	j--;
       }
@@ -48,7 +48,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && compareString(classmates[j].getLastNameF(), pivot.getLastNameF())){
+      while(j >= 0 && compareString(classmates[j].getLastNameF(), pivot.getLastNameF())){
 	classmates[j + 1] = classmates[j];
 	j--;
       }
@@ -61,7 +61,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && compareString(classmates[j].getLastNameM(), pivot.getLastNameM())){
+      while(j >= 0 && compareString(classmates[j].getLastNameM(), pivot.getLastNameM())){
 	classmates[j + 1] = classmates[j];
 	j--;
       }
@@ -75,7 +75,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && compareString(classmates[j].getDateOfBirth(), pivot.getDateOfBirth())){
+      while(j >= 0 && compareString(classmates[j].getDateOfBirth(), pivot.getDateOfBirth())){
         classmates[j + 1] = classmates[j];
         j--;
       }
@@ -89,7 +89,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && classmates[j].getGender() > pivot.getGender()){
+      while(j >= 0 && classmates[j].getGender() > pivot.getGender()){
         classmates[j + 1] = classmates[j];
         j--;
       }
@@ -103,7 +103,7 @@ public class InsertionSort{
     for(int i = 0; i < classmates.length; i++){
       j = i - 1;
       pivot = classmates[i];
-      while(j > 0 && classmates[j].getStatus() > pivot.getStatus()){
+      while(j >= 0 && classmates[j].getStatus() > pivot.getStatus()){
         classmates[j + 1] = classmates[j];
 	j--;
       }
