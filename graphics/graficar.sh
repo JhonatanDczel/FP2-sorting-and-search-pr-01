@@ -21,7 +21,7 @@ fi
 gnuplot <<-EOF
 	# Cambiamos el output de la terminal a png
 	set terminal pngcairo enhanced
-	set output "./imgs/$outputFile"
+	set output "./graphics/imgs/$outputFile"
 
 	set title "$1" textcolor rgb "white" font "helvetica,12"
 	set key left box textcolor "white" font "helvetica,12"
@@ -35,5 +35,5 @@ gnuplot <<-EOF
 	$plotLine
 EOF
 
-xdg-open "./imgs/$outputFile"
+xdg-open "./graphics/imgs/$outputFile"
 echo "El gráfico se ha generado como $outputFile"

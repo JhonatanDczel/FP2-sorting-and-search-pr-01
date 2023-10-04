@@ -24,32 +24,10 @@ public class Comparation{
 
   public static void getTestCases(){
     int datos = students.length;
-    for(int i = 0; i < 100; i++){
-      testCases[i] = (int) ((i / 100.0) * datos);
-      if(testCases[i] == 0)
+    for(int i = 1; i < 101; i++){
+      testCases[i - 1] = (int) ((i / 100.0) * datos);
+      if(testCases[i - 1] == 0)
         testCases[i] = 1;
-    }
-  }
-
-  public static void runAlgorithm(int option){
-    switch (option) {
-      case 1:
-        Test.runAlgorithm();
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      case 4:
-        break;
-      case 5:
-        break;
-      case 6:
-        System.out.println("Saliendo del programa...");
-        System.exit(0);
-        break;
-      default:
-        System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
     }
   }
 
@@ -88,6 +66,7 @@ public class Comparation{
             case 1:
               InsertionSort.cui(s);
               printStudents(s);
+              Test.runAlgorithm(o1, o2);
               break;
             case 2:
               InsertionSort.email(s);
@@ -120,7 +99,7 @@ public class Comparation{
             default:
               System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
           }
-          //System.exit(0);
+          System.exit(0);
           break;
 //========================case 2
         case 2:
@@ -257,6 +236,7 @@ public class Comparation{
           System.out.println("5. apellido materno");
           System.out.println("6. F. nacimiento");
           opcion = sc.nextInt();
+          o2 = opcion;
           switch (opcion) {
             case 1:
               QuickSort.cui(s, 0, s.length - 1);
@@ -284,7 +264,7 @@ public class Comparation{
               ri = IterativeBinarySearch.name(s, rs);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
-         break;
+              break;
             case 4:
               QuickSort.lastNameF(s, 0, s.length - 1);
               System.out.println("Ingrese el valor a buscar");
@@ -328,10 +308,6 @@ public class Comparation{
           System.out.println("Saliendo del programa...");
           System.exit(0);
           break;
-//========================case 7
-        case 7:
-          Test.runAlgorithm();
-          break;
         default:
           System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
       }
@@ -346,69 +322,69 @@ public class Comparation{
       int option = o1 * 10 + o2;
       switch (option) {
         case 11:
-          Quicksort.cui(muestra, 0, muestra.length - 1);
+          QuickSort.cui(muestra, 0, muestra.length - 1);
           name = "CUI";
           break;
         case 12:
-          Quicksort.email(muestra, 0, muestra.length - 1);
-          break;
+          QuickSort.email(muestra, 0, muestra.length - 1);
           name = "Email";
+          break;
         case 13:
-          Quicksort.name(muestra, 0, muestra.length - 1);
-          break;
+          QuickSort.name(muestra, 0, muestra.length - 1);
           name = "Nombre";
+          break;
         case 14:
-          Quicksort.lastNameF(muestra, 0, muestra.length - 1);
-          break;
+          QuickSort.lastNameF(muestra, 0, muestra.length - 1);
           name = "Apellido Paterno";
+          break;
         case 15:
-          Quicksort.lastNameM(muestra, 0, muestra.length - 1);
-          break;
+          QuickSort.lastNameM(muestra, 0, muestra.length - 1);
           name = "Apellido Materno";
+          break;
         case 16:
-          Quicksort.dateOfBirth(muestra, 0, muestra.length - 1);
-          break;
+          QuickSort.dateOfBirth(muestra, 0, muestra.length - 1);
           name = "Fecha de nacimiento";
+          break;
         case 17:
-          Quicksort.gender(muestra, 0, muestra.length - 1);
-          break;
+          QuickSort.gender(muestra, 0, muestra.length - 1);
           name = "Genero";
-        case 18:
-          Quicksort.status(muestra, 0, muestra.length - 1);
           break;
+        case 18:
+          QuickSort.status(muestra, 0, muestra.length - 1);
           name = "Estado";
+          break;
         case 21:
           InsertionSort.cui(muestra);
           name = "CUI";
           break;
         case 22:
           InsertionSort.email(muestra);
-          break;
           name = "Email";
+          break;
         case 23:
           InsertionSort.name(muestra);
-          break;
           name = "Nombre";
+          break;
         case 24:
           InsertionSort.lastNameF(muestra);
-          break;
           name = "Apellido Paterno";
+          break;
         case 25:
           InsertionSort.lastNameM(muestra);
-          break;
           name = "Apellido Materno";
+          break;
         case 26:
           InsertionSort.dateOfBirth(muestra);
-          break;
           name = "Fecha de nacimiento";
+          break;
         case 27:
           InsertionSort.gender(muestra);
-          break;
           name = "Genero";
+          break;
         case 28:
           InsertionSort.status(muestra);
-          break;
           name = "Estado";
+          break;
         default:
           break;
       }
@@ -418,7 +394,7 @@ public class Comparation{
       for(int i = 0; i < 100; i++){
         Reader.Student[] muestra = Arrays.copyOf(sujetosPrueba, testCases[i]);
         long startTime = System.nanoTime();
-        selectUser(o1, o2, muestra)
+        selectUser(o1, o2, muestra);
         long endTime = System.nanoTime();
         String time = Long.toString(endTime - startTime);
         data = data + "\n" + String.valueOf(testCases[i]) + "\t" + time;
