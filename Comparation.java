@@ -7,9 +7,10 @@ public class Comparation{
   private static Reader.Student[] students = rd.getData();
   private static Scanner sc = new Scanner(System.in);
   private static int[] casosDePrueba = new int[100];
+
   public static void main(String[] args){
     generarCasosDePrueba();
-    menu();
+    menu(students);
   }
   public static void generarCasosDePrueba(){
     int datos = students.length;
@@ -17,7 +18,7 @@ public class Comparation{
       casosDePrueba[i] = (int) ((i / 100.0) * datos);
     }
   }
-  public static void menu(){
+  public static void menu(Reader.Student[] s){
     while (true) {
       System.out.println("\n=======Menu Principal========");
       System.out.println("1. Ordenamiento por Inserción");
@@ -31,8 +32,66 @@ public class Comparation{
 
       switch (opcion) {
         case 1:
+          System.out.println("\n=======Ordenar por:========");
+          System.out.println("1. cui");
+          System.out.println("2. email");
+          System.out.println("3. name");
+          System.out.println("4. apellido paterno");
+          System.out.println("5. apellido materno");
+          System.out.println("6. F. nacimiento");
+          System.out.println("7. Genero");
+          System.out.println("8. Status");
+          opcion = sc.nextInt();
+          switch (opcion) {
+            case 1:
+              InsertionSort.cui(s);
+              printStudents(s);
+              break;
+            case 2:
+              InsertionSort.email(s);
+              printStudents(s);
+              break;
+            case 3:
+              InsertionSort.name(s);
+              printStudents(s);
+              break;
+            case 4:
+              InsertionSort.lastNameF(s);
+              printStudents(s);
+              break;
+            case 5:
+              InsertionSort.lastNameM(s);
+              printStudents(s);
+              break;
+            case 6:
+              InsertionSort.dateOfBirth(s);
+              printStudents(s);
+              break;
+            case 7:
+              InsertionSort.gender(s);
+              printStudents(s);
+              break;
+            case 8:
+              InsertionSort.status(s);
+              printStudents(s);
+              break;
+            default:
+              System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+          }
+          System.exit(0);
           break;
         case 2:
+          System.out.println("\n=======Ordenar por:========");
+          System.out.println("1. cui");
+          System.out.println("2. email");
+          System.out.println("3. name");
+          System.out.println("4. apellido paterno");
+          System.out.println("5. apellido materno");
+          System.out.println("6. F. nacimiento");
+          System.out.println("7. Genero");
+          System.out.println("8. Status");
+
+          System.exit(0);
           break;
         case 3:
           break;
@@ -49,4 +108,11 @@ public class Comparation{
       }
     }
   }
+  public static void printStudents(Reader.Student [] s) {
+    for (int i = 0; i < s.length; i++){
+      System.out.println(s[i]);
+    }
+
+  }
+
 }
