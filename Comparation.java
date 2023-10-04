@@ -8,6 +8,7 @@ public class Comparation{
   private static Scanner sc = new Scanner(System.in);
   private static Reader rd = new Reader();
   private static Reader.Student[] students = rd.getData();
+  private static Reader.Student[] studentsG = rd.getData();
   private static int[] testCases = new int[100];
 
   public static void main(String[] args){
@@ -339,16 +340,85 @@ public class Comparation{
 
 
   public class Test{
-    static private Reader.Student[] sujetosPrueba = Arrays.copyOf(students, students.length);
-    static public void runAlgorithm(){
-      quicksort();
+    static public String name;
+    static private Reader.Student[] sujetosPrueba = Arrays.copyOf(studentsG, studentsG.length);
+    static public void selectUser(int o1, int o2, Reader.Student[] muestra){
+      int option = o1 * 10 + o2;
+      switch (option) {
+        case 11:
+          Quicksort.cui(muestra, 0, muestra.length - 1);
+          name = "CUI";
+          break;
+        case 12:
+          Quicksort.email(muestra, 0, muestra.length - 1);
+          break;
+          name = "Email";
+        case 13:
+          Quicksort.name(muestra, 0, muestra.length - 1);
+          break;
+          name = "Nombre";
+        case 14:
+          Quicksort.lastNameF(muestra, 0, muestra.length - 1);
+          break;
+          name = "Apellido Paterno";
+        case 15:
+          Quicksort.lastNameM(muestra, 0, muestra.length - 1);
+          break;
+          name = "Apellido Materno";
+        case 16:
+          Quicksort.dateOfBirth(muestra, 0, muestra.length - 1);
+          break;
+          name = "Fecha de nacimiento";
+        case 17:
+          Quicksort.gender(muestra, 0, muestra.length - 1);
+          break;
+          name = "Genero";
+        case 18:
+          Quicksort.status(muestra, 0, muestra.length - 1);
+          break;
+          name = "Estado";
+        case 21:
+          InsertionSort.cui(muestra);
+          name = "CUI";
+          break;
+        case 22:
+          InsertionSort.email(muestra);
+          break;
+          name = "Email";
+        case 23:
+          InsertionSort.name(muestra);
+          break;
+          name = "Nombre";
+        case 24:
+          InsertionSort.lastNameF(muestra);
+          break;
+          name = "Apellido Paterno";
+        case 25:
+          InsertionSort.lastNameM(muestra);
+          break;
+          name = "Apellido Materno";
+        case 26:
+          InsertionSort.dateOfBirth(muestra);
+          break;
+          name = "Fecha de nacimiento";
+        case 27:
+          InsertionSort.gender(muestra);
+          break;
+          name = "Genero";
+        case 28:
+          InsertionSort.status(muestra);
+          break;
+          name = "Estado";
+        default:
+          break;
+      }
     }
-    static public void quicksort(){
+    static public void runAlgorithm(int o1, int o2){
       String data = "";
       for(int i = 0; i < 100; i++){
         Reader.Student[] muestra = Arrays.copyOf(sujetosPrueba, testCases[i]);
         long startTime = System.nanoTime();
-        QuickSort.cui(muestra, 0, muestra.length - 1);
+        selectUser(o1, o2, muestra)
         long endTime = System.nanoTime();
         String time = Long.toString(endTime - startTime);
         data = data + "\n" + String.valueOf(testCases[i]) + "\t" + time;
@@ -358,16 +428,8 @@ public class Comparation{
       } catch (IOException e) {
         e.printStackTrace();
       }
-      try {
-          String comando = "./graphics/graficar.sh \"Grafica QuickSort CUI\" ./graphics/input/data.dat";
-          ProcessBuilder builder = new ProcessBuilder();
-          builder.command("sh", "-c", comando);
-          Process proceso = builder.start();
-      } catch (IOException e) {
-          e.printStackTrace();
-          System.out.println("fallo");
-      }
+      String comando = "./graphics/graficar.sh \"" + name + "\" ./graphics/input/data.dat";
+      System.out.println("Grafica generada satisfactoriamente, corre el siguiente comando:\n" + comando);
     }
-
   }
 }
