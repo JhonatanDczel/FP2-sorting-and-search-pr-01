@@ -405,7 +405,13 @@ public class Comparation{
         e.printStackTrace();
       }
       String comando = "./graphics/graficar.sh \"" + name + "\" ./graphics/input/data.dat";
-      System.out.println("Grafica generada satisfactoriamente, corre el siguiente comando:\n" + comando);
+      try {
+          ProcessBuilder builder = new ProcessBuilder();
+          builder.command("sh", "-c", comando);
+          Process proceso = builder.start();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
     }
   }
 }
