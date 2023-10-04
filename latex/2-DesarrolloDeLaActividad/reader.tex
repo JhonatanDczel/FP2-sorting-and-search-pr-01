@@ -1,5 +1,61 @@
-\subsection{Clase Reader.java}
-%Aqui desarrollas la explicacion de tu codigo
+\subsection{Lectura y almacenamiento de datos}
 
-\subsubsection{Commits principales}
-%Aqui muestras los commits mas relevantes
+\subsubsection{Descripción}
+
+La clase \texttt{Reader} se encarga de leer los datos de un archivo CSV y almacenarlos en un arreglo de objetos \texttt{Student}. Los pasos principales son:
+
+\begin{itemize}
+\item Abrir el archivo \texttt{data.csv} 
+\item Leer linea por linea con \texttt{BufferedReader}
+\item Separar cada linea por comas para obtener los campos
+\item Crear un nuevo objeto \texttt{Student}
+\item Setear los campos leídos en el objeto \texttt{Student}
+\item Agregar el objeto \texttt{Student} a un \texttt{ArrayList}
+\item Convertir el \texttt{ArrayList} a un arreglo al final
+\end{itemize}
+
+\subsubsection{Código relevante}
+
+\begin{lstlisting}[language=Java,caption=Método para leer archivo CSV,]
+private void readDataFile(){
+
+  BufferedReader reader = null;
+
+  String line = "";
+
+  String[] parts;
+
+  try {
+
+    FileReader fileReader = new FileReader("./reader/data.csv");
+
+    reader = new BufferedReader(fileReader);
+
+    while ((line = reader.readLine()) != null) {
+
+      parts = line.split(",");
+      
+      //... creación y seteo de Student
+
+    }
+
+  }catch (Exception e){
+
+    e.printStackTrace();
+
+  }finally{
+
+    //...cerrar reader
+
+  }
+
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java,caption=Conversión de ArrayList a arreglo]
+classmates = students.toArray(new Student[students.size()]);
+\end{lstlisting}
+
+\subsubsection{Explicación}
+
+Se utiliza \texttt{BufferedReader} para leer el archivo línea por línea de forma eficiente. Cada línea se divide en las partes correspondientes a cada campo, delimitadas por comas. Luego se crea un objeto \texttt{Student}, se setean sus campos y se agrega al \texttt{ArrayList}. Al final se convierte el \texttt{ArrayList} a arreglo para retornarlo.
