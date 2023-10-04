@@ -1,10 +1,121 @@
 \subsection{Busqueda Binaria}
 %Aqui desarrollas la explicacion de tu codigo
+	\begin{itemize}	
+    \item La búsqueda binaria es un algoritmo de búsqueda eficiente utilizado para encontrar un elemento específico en una lista ordenada. 
+    \item Tanto la versión recursiva como la iterativa de la búsqueda binaria se basan en el mismo principio: dividir y vencerás.
+    \item En la búsqueda binaria recursiva, se divide repetidamente la lista en dos mitades y se compara el elemento buscado con el elemento en el medio. Este proceso se repite de manera recursiva hasta que se encuentre el elemento deseado 
+    \item La búsqueda binaria iterativa se implementa mediante un bucle en lugar de una función recursiva.
+	\end{itemize}	
 \subsubsection{Forma iterativa}
 %Explicacion forma iterativa
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: 55e501872e486ef65d414a41aeb9f673c6b8318e}
+    \item Se creo \textquote{IterativeBinarySearch.java} donde se implementó el método cui() para realizar la búsqueda binaria de manera iterativa.
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit: Se creó el método cui para la búsqueda binaria}, numbers=left, firstnumber=1][H]
+  public static int cui (Reader.Student [] s, int x) {
+    int l, r;
+    l = 0;
+    r = s.length - 1;
+    while (l <= r) {
+      int m = l + ( r - l ) / 2;
+      if (s[m].getCui() == x) return m;
+      if (s[m].getCui() < x) l = m + 1;
+      else r = m - 1;
+    }
+    return -1;
+  }
 
+  \end{lstlisting}
+
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: b90e4fbe4c4373de351edf016e255e9534088251}
+    \item De manera similar, se implementó el método \textquote{ email() } usando como comparador la función \textquote{smallerThan()}.
+    \item Usando esta última función sabemos si la palabra buscada debería estar al delante o atrás.
+    \item Usando este método que funciona con Strings, también se implementó el resto de funciones según los atributos de la clase Student.
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit: Implementación para busqueda según email}, numbers=left, firstnumber=1][H]
+  public static int email (Reader.Student [] s, String x) {
+    int l = 0, r = s.length - 1;
+    while (l <= r) {
+      int m = l + (r - l) / 2; 
+      if (s[m].getEmail().equals(x)) return m;
+      if (smallerThan(s[m].getEmail(), x)) l = m + 1;
+      else r = m - 1;
+    }
+    return -1;
+  }
+  
+  public static boolean smallerThan(String w1, String w2) {
+      w1.toUpperCase();
+      w2.toUpperCase();
+      if (w1.compareTo(w2) <= 0) return true;
+      return false;
+
+    }
+     
+ }
+  \end{lstlisting}
 \subsubsection{Forma recursiva}
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: 2318dc5647d46b889c72f61a09a9fd7b8f8f2f5a}
+    \item Posteriormente se creo el archivo \textquote{RecursiveBinarySearch.java} donde se implementaron las siguientes clases: \textquote{cui()} y \textquote{email()}.
+    \item Estas clases usan el algoritmo de la búsqueda binaria recursiva. Se reutiliza la función \textquote{smallerThan()} para comparar Strings.
+    \item De manera análoga se implementa al resto de atributos de la clase Student que están basados en Strings, los cuales no se muestran en el presente informe para evitar una extensión innecesaria del mismo.
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit: Se creó la búsqueda binaria con los métodos de cui y email}, numbers=left, firstnumber=1][H]
+package algorithms;
+
+import reader.Reader;
+
+public class RecursiveBinarySearch {
+  public static int cui (Reader.Student [] s, int x, int l, int r) {
+    if (r >= l) {
+      int m = l + (r - l) / 2;
+      if (s[m].getCui() == x) return  m;
+      if (s[m].getCui() > x) return cui(s, x, l, m -1);
+      return cui(s, x, m + 1, r);
+    }
+    return -1;
+  }
+  public static int email (Reader.Student [] s, String x, int l, int r) {
+    if (r >= l) {
+      int m = l + (r - l) / 2;
+      if (s[m].getEmail().equals(x)) return  m;
+      if ( smallerThan(s[m].getEmail(), x) ) return email(s, x, m + 1, r);
+      return email(s, x, l, m - 1);
+    }
+    return -1;
+  }
+  public static boolean smallerThan(String w1, String w2) {
+      w1.toUpperCase();
+      w2.toUpperCase();
+      if (w1.compareTo(w2) <= 0) return true;
+      return false;
+
+    }
+
+}
+
+  \end{lstlisting}
 %Explicacion forma recursiva
 
-\subsubsection{Commits principales}
-%Aqui muestras los commits mas relevantes
+\begin{comment}
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: }
+    \item
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={TITULOOOOOO}, numbers=left, firstnumber=1][H]
+  \end{lstlisting}
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: }
+    \item
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={TITULOOOOOO}, numbers=left, firstnumber=1][H]
+  \end{lstlisting}
+\end{comment}

@@ -1,3 +1,6 @@
 *.class
 *.exe
 *.swp
+*.aux
+*.log
+*.out

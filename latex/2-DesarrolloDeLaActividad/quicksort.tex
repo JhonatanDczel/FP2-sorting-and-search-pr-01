@@ -1,5 +1,143 @@
-\subsection{Algoritmo quicksort}
+\subsection{Quicksort}
 %Aqui desarrollas la explicacion de tu codigo
+	\begin{itemize}	
+        \item El método \textquote{Quicksort}, también conocido como ordenación rápida, es uno de los algoritmos de ordenación más eficientes y ampliamente utilizados en la informática. 
+        \item Se basa en el paradigma de divíde y vencerás. Consiste en seleccionar un elemento de la lista, llamado "pivote," y reorganizar los elementos en la lista de manera que los elementos menores que el pivote estén a su izquierda, y los elementos mayores estén a su derecha.
+        \item Cuando se elige un pivote adecuado, \textquote{Quicksort} puede alcanzar su rendimiento óptimo, que es O(n log n) en promedio. Sin embargo, en el peor de los casos, se puede degradar a O(n  ^ 2).
+	\end{itemize}	
 
-\subsubsection{Commits principales}
+
+\subsubsection{Commits de la implementación de Quicksort}
 %Aqui muestras los commits mas relevantes
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: afde7b901d3ac3c8414a3d6976fde97bcbe9729d}
+    \item En el presente commit se implementó el quicksort para ordenar los CUI, sin embargo cuenta con un error. Cambia la referencia del atributo cui de la clase Student, sin embargo, no cambia la la referencia del objeto mismo, es un error que se solucionará más adelante. 
+  \end{itemize}
+    \begin{lstlisting}[language=Java, caption={Commit: Se implementó Quicksort para cui}, numbers=left, firstnumber=1][H]
+    public static void Cui (Reader.Student[] s, int left, int right) {
+        int i = left;
+        int j = right;
+        int aux;
+        while (i < j) {
+            while (s[i].getCui() <= piv && i < j) i++;
+            while (s[j].getCui() > piv) j--;
+            if (i < j) {
+                aux = s[i].getCui();
+                s[i].setCui(s[j].getCui()); 
+                s[j].setCui(aux);
+            }
+         }
+        s[left].setCui(s[j].getCui());
+        s[j].setCui(piv);
+        if (left < j - 1)  Cui(s, left, j -1);
+        if (j + 1< right) Cui(s, j + 1, right);
+        
+     }
+    \end{lstlisting}
+
+
+
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: c9e70896b8edb82f963375cac9a4cb72d67ed6fb}
+    \item En el presente commit de manera similar se implementó el método email para ordenar según la primera letra a los correos, que están representados mediante Strings, sin embargo, presenta el error de solo ordenar la primera letra. Más adelante se parchará el error.
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit: Se añadió el método email para ordenar los correos según quicksort}, numbers=left, firstnumber=1][H]
+
+    public static void email (Reader.Student[] s, int left, int right) {
+        char piv = s[left].getEmail().charAt(0);
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (s[i].getEmail().charAt(0) <= piv && i < j) i++;
+            while (s[j].getEmail().charAt(0) > piv) j--;
+            if (i < j) {
+                aux = s[i].getEmail();
+                s[i].setEmail(s[j].getEmail()); 
+                s[j].setEmail(aux);
+            }
+        }
+        aux = s[left].getEmail();
+        s[left].setEmail(s[j].getEmail());
+        s[j].setEmail(aux);
+        if (left < j - 1)  email(s, left, j -1);
+        if (j + 1< right) email(s, j + 1, right);
+     }
+
+  \end{lstlisting}
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: cb4418c7361dc0e2da32042698b2400e79beebfd}
+    \item Se creó la fución \textquote{smallerThan()} en la cual se usa el método String.compareTO(String), la función de esta misma es restar los caracteres según su orden ascii. Si w1 - w2 es positivo, significa que w1 debería estar después de w2.
+    \item Esta función se utiliza cada vez que se quiere comparar dos String, solucionando el error mencionado anteriormente. 
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit: Se mejoró los métodos que ordenan Strings}, numbers=left, firstnumber=1][H]
+    public static boolean smallerThan(String w1, String w2) {
+        w1.toUpperCase();
+        w2.toUpperCase();
+        if (w1.compareTo(w2) <= 0) return true;
+        return false;
+ 
+    }
+
+// Uso de smallerThan en otras funciones:
+
+    public static void lastNameM (Reader.Student[] s, int left, int right) {
+        String piv = s[left].getLastNameM();
+        int i = left;
+        int j = right;
+        String aux;
+        while (i < j) {
+            while (smallerThan(s[i].getLastNameM(), piv) && i < j) i++;
+            while (!smallerThan(s[j].getLastNameM(), piv)) j--;
+            if (i < j) {
+                aux = s[i].getLastNameM();
+                s[i].setLastNameM(s[j].getLastNameM()); 
+                s[j].setLastNameM(aux);
+            }
+        }
+        aux = s[left].getLastNameM();
+        s[left].setLastNameM(s[j].getLastNameM());
+        s[j].setLastNameM(aux);
+        if (left < j - 1)  lastNameM (s, left, j -1);
+        if (j + 1< right) lastNameM(s, j + 1, right);
+    }
+
+  \end{lstlisting}
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item \textbf{Hash: 0c89058320e8f2dc1981a4666c3deb86df450702}
+    \item Se solucioó el primer error mencionado, en esta oportunidad, el código intercambia la referencia de los objetos en el array en vez de sus atributos.
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit: Se solucionó error de cambio de valores de atributos en vez de las referencias de los objetos}, numbers=left, firstnumber=1][H]
+    public static void email (Reader.Student[] s, int left, int right) {
+         String piv = s[left].getEmail();
+         int i = left;
+         int j = right;
+         Reader.Student aux;
+         while (i < j) {
+             while (smallerThan(s[i].getEmail(), piv) && i < j) i++;
+             while (!smallerThan(s[j].getEmail(), piv)) j--;
+             if (i < j) {
+                 aux = s[i];
+                 s[i] = s[j]; 
+                 s[j] = aux;
+             }
+         }
+         aux = s[left];
+         s[left] = s[j];
+         s[j] = (aux);
+         if (left < j - 1)  email(s, left, j -1);
+         if (j + 1< right) email(s, j + 1, right);
+     }
+
+  \end{lstlisting}
+%COMMIT----------------------------------------------
+  \begin{itemize}
+    \item Hash: 
+    \item
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={TITULOOOOOO}, numbers=left, firstnumber=1][H]
+  \end{lstlisting}
