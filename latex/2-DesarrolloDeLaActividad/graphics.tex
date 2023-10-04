@@ -1,5 +1,244 @@
 \subsection{Parte grafica}
 %Aqui desarrollas la explicacion de tu codigo
+Necesitamos una graficadora, que interprete el comportamiento de los algoritmos de ordenamiento, en un tiempo y muestra determinados\dots
+\begin{itemize}
+  \item Para hacerlo usaremos GNUPlot
+  \item Necesitaremos un Script que muestre por pantalla la grafica de los algoritmos
+\end{itemize}
+\subsubsection{Script de bash para GNUPlot}
+
+\begin{lstlisting}[language=bash, caption={Script de GNUPlot}, numbers=left, firstnumber=1][H]
+
+#Definimos el nombre por defecto en caso de no haber ingresado un nombre en el segundo parametro
+if [ "$outputFile" == ".png" ]; then
+	outputFile="Grafica.png"
+fi
+
+#Ahora definimos los nombres de los archivos
+grafico1=$(echo "$2" | cut -c 18- | rev | cut -c 5- | rev)
+grafico2=$(echo "$3" | cut -c 18- | rev | cut -c 5- | rev)
+#Definimos la linea que se usara para la salida del plot
+plotLine="plot \"$2\" w lp lw 3 lc rgb \"#62aeef\" pt 6 title \"$grafico1\""
+if [[ $3 != "" ]]; then
+	plotLine="$plotLine, \"$3\" w lp lw 3 lc rgb \"#ddf056\" pt 6 t \"$grafico2\""
+fi
+
+# aqui se ejecuta Gnuplot para generar el gráfico y exportarlo
+gnuplot <<-EOF
+	# Cambiamos el output de la terminal a png
+	set terminal pngcairo enhanced
+	set output "./graphics/imgs/$outputFile"
+
+	set title "$1" textcolor rgb "white" font "helvetica,12"
+	set key left box textcolor "white" font "helvetica,12"
+	set object 1 rectangle from screen 0,0 to screen 1,1 behind noclip fc rgb "#32363d" fillstyle solid 1.0
+	set border lc rgb "white" lw 2
+	set xlabel "Data count" font "helvetica,12" textcolor "white"
+	set ylabel "Time (ns)" font "helvetica,12" textcolor "white"
+	set tics font "helvetica,11" textcolor rgb "#faf95d"
+
+	# Se crea la grafica
+	$plotLine
+EOF
+
+xdg-open "./graphics/imgs/$outputFile"
+echo "El gráfico se ha generado como $outputFile"  
+
+\end{lstlisting}
+\begin{itemize}
+  \item Este script recibe dos parametros:
+  \item Nombre para la imagen del resultado
+  \item Archivo .dat que se graficara 
+
+\end{itemize}
+\subsubsection{Menu}
+\begin{itemize}
+  \item Necesitamos un menu para pedir entradas al usuario, nuestro se vera de la siguiente manera:
+\end{itemize}
+
+\begin{lstlisting}[language=java, caption={Menu}, numbers=left, firstnumber=1][H]
+      System.out.println("\n=======Menu Principal========");
+      System.out.println("1. Ordenamiento por Inserción");
+      System.out.println("2. Ordenamiento por Quicksort");
+      System.out.println("3. Búsqueda Binaria Recursiva");
+      System.out.println("4. Búsqueda Binaria Iterativa");
+      System.out.println("5. Comparar Rendimientos");
+      System.out.println("6. Salir");
+      System.out.print("Seleccione una opción: ");
+
+\end{lstlisting}
+\begin{itemize}
+  \item Adicionalmente, tendremos que mostrarle las opciones de ordenamiento para cada uno de los algoritmos:
+\end{itemize} 
+\begin{lstlisting}[language=bash, caption={Menu}, numbers=left, firstnumber=1][H]
+          System.out.println("\n=======Ordenar por:========");
+          System.out.println("1. cui");
+          System.out.println("2. email");
+          System.out.println("3. name");
+          System.out.println("4. apellido paterno");
+          System.out.println("5. apellido materno");
+          System.out.println("6. F. nacimiento");
+          System.out.println("7. Genero");
+          System.out.println("8. Status");
+\end{lstlisting}
+\begin{itemize}
+  \item Con esto pediremos dos entradas al usuario, que seran almacenadas en dos variables de tipo entero 
+
+\end{itemize}
+
+La estructura de ejecucion de nuestro menu, consta de switchs anidados, el primero incluye los elementos del primer menu, y el segundo incluye los elementos del segundo menu
+
+
+
+\subsubsection{Clase Test}
+\begin{itemize}
+  \item Ahora necesitamos una clase Test, que corra un algoritmo con casos de prueba
+  \item Tenemos dos metodos principales, runAlgorithm y compareAlgorith
+  \item La clase tiene los siguientes atributos:
+  \begin{itemize}
+    \item String name, se refiere al algoritmo que se esta ejecutando
+    \item Reader.Student[] sujetosPrueba, es la copia de array para hacer los ordenamientos (Importante: Para evitar el conflicto de pasar objeto por referencia en lugar de valor, cada llamada a Test copiara un nuevo arreglo identico al original para asegurarnos de tener siempre un arreglo desordenado)
+  \end{itemize}
+\end{itemize}
+\subsubsection{selectUser: Metodo auxiliar}
+\begin{itemize}
+  \item Para poder ejecutar el algoritmo correcto segun la entrada del usuario, necesitaremos un metodo que tome la entrada del usuario y corra el algoritmo correcto
+  \item Las entradas para el metodo son, son dos enteros representando la eleccion 1 y eleccion 2 del usuario, y un arreglo de estudiantes para ordenar
+\end{itemize}
+
+
+\begin{lstlisting}[language=java, caption={Metodo auxiliar}, numbers=left, firstnumber=1][H]
+
+ static public void selectUser(int o1, int o2, Reader.Student[] muestra){
+      int option = o1 * 10 + o2;
+      switch (option) {
+        case 11:
+          QuickSort.cui(muestra, 0, muestra.length - 1);
+          name = "CUI";
+          break;
+        case 12:
+          QuickSort.email(muestra, 0, muestra.length - 1);
+          name = "Email";
+          break;
+        case 13:
+          QuickSort.name(muestra, 0, muestra.length - 1);
+          name = "Nombre";
+          break;
+        case 14:
+          QuickSort.lastNameF(muestra, 0, muestra.length - 1);
+          name = "Apellido Paterno";
+          break;
+          ...
+\end{lstlisting}
+\subsubsection{Metodo runAlgorithm}
+\begin{itemize}
+  \item El metodo se encarga de hacer un test a un determinado algoritmo
+\end{itemize}
+\begin{lstlisting}[language=java, caption={Testear algoritmo}, numbers=left, firstnumber=1][H]
+    static public void runAlgorithm(int o1, int o2){
+      String data = "";
+      for(int i = 0; i < 100; i++){
+        if(i == 0)
+          continue;
+        Reader.Student[] muestra = Arrays.copyOf(sujetosPrueba, testCases[i]);
+        long startTime = System.nanoTime();
+        selectUser(o1, o2, muestra);
+        long endTime = System.nanoTime();
+        String time = Long.toString(endTime - startTime);
+        data = data + "\n" + String.valueOf(testCases[i]) + "\t" + time;
+      }
+      try (BufferedWriter bw = new BufferedWriter(new FileWriter("./graphics/input/data.dat"))) {
+        bw.write(data);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      String comando = "./graphics/graficar.sh \"" + name + "\" ./graphics/input/data.dat";
+      try {
+          ProcessBuilder builder = new ProcessBuilder();
+          builder.command("sh", "-c", comando);
+          Process proceso = builder.start();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+    }
+\end{lstlisting}
+
+
+\begin{itemize}
+  \item Como vemos, se recorre un ciclo for 100 veces, y en cada ciclo se llama a el metodo selectUser (que ejecutara el algoritmo correcto segun lo que el usuario ingrese) y guargara los datos de cada ejecucion en el String data
+  \item Posteriormente se escribe un archivo llamado data.dat que contiene los datos de ejecucion del algoritmo 
+  \item Con esto, se procede a ejecutar por consola el comando que llamara a nuestro scritp anteriormente mostrado, para generar una grafica por pantalla
+\end{itemize}
+\subsubsection{Metodo compareAlgorith}
+\begin{itemize}
+  \item Para esto, necesitaremos hacer una doble implementacion del anterior metodo,
+  \item Escribiremos dos archivos de dos algoritmos respectivos y luego ejecutaremos el script con esos dos parametros
+
+\end{itemize}
+\begin{lstlisting}[language=java, caption={Testear algoritmo}, numbers=left, firstnumber=1][H]
+    static public void compareAlgorithm(){
+      String data1 = "";
+      String data2 = "";
+      for(int i = 0; i < 100; i++){
+        if(i == 0)
+          continue;
+        Reader.Student[] muestra1 = Arrays.copyOf(sujetosPrueba, testCases[i]);
+        Reader.Student[] muestra2 = Arrays.copyOf(muestra1, muestra1.length);
+        long startTime1 = System.nanoTime();
+        selectUser(1, 6, muestra1);
+        long endTime1 = System.nanoTime();
+        String time1 = Long.toString(endTime1 - startTime1);
+        data1 = data1 + "\n" + String.valueOf(testCases[i]) + "\t" + time1;
+
+        long startTime2 = System.nanoTime();
+        selectUser(2, 6, muestra2);
+        long endTime2 = System.nanoTime();
+        String time2 = Long.toString(endTime2 - startTime2);
+        data2 = data2 + "\n" + String.valueOf(testCases[i]) + "\t" + time2;
+      }
+      String file1 = "./graphics/input/InsertionSort.dat";
+      try (BufferedWriter bw = new BufferedWriter(new FileWriter(file1))) {
+        bw.write(data1);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      String file2 = "./graphics/input/QuickSort.dat";
+      try (BufferedWriter bw = new BufferedWriter(new FileWriter(file2))) {
+        bw.write(data2);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+      String comando = "./graphics/graficar.sh \"Comparacion de algoritmos\" " + file1 + " " + file2;
+      try {
+          ProcessBuilder builder = new ProcessBuilder();
+          builder.command("sh", "-c", comando);
+          Process proceso = builder.start();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+    }
+
+\end{lstlisting}
+\begin{itemize}
+  \item Luego de llamar a una comparacion, tendremos una grafica por pantalla que nos mostrara el comportamiento de los dos algoritmos de ordenamiento
+\end{itemize}
+\subsubsection
+
+
 
 \subsubsection{Commits principales}
 %Aqui muestras los commits mas relevantes
+
+\begin{lstlisting}[language=java, caption={Testear algoritmo}, numbers=left, firstnumber=1][H]
+commit 36c13d21d090dfff3745e873cd488fb5f6bf99b5
+Author: JhonatanDczel <jariasq@unsa.edu.pe>
+Date:   Wed Oct 4 13:11:18 2023 -0500
+
+    Comparation, corrigiendo errores
+\end{lstlisting}
+\begin{itemize}
+  \item Previamente se subio una version de la Clase Test, que ejecutaba los casos de prueba de un determinado algoritmo
+  \item En esta version, se corrigieron errores de sintaxis y de ejecucion
+\end{itemize}
