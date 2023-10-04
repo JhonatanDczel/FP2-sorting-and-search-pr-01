@@ -5,13 +5,17 @@ import algorithms.*;
 public class Comparation{
   private static Reader rd = new Reader();
   private static Reader.Student[] students = rd.getData();
+  private static Scanner sc = new Scanner(System.in);
+  private static int[] casosDePrueba = new int[100];
   public static void main(String[] args){
-    Scanner sc = new Scanner(System.in);
+    generarCasosDePrueba();
     menu();
   }
   public static void generarCasosDePrueba(){
     int datos = students.length;
-    
+    for(int i = 0; i < 100; i++){
+      casosDePrueba[i] = (int) ((i / 100.0) * datos);
+    }
   }
   public static void menu(){
     while (true) {
