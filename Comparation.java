@@ -238,8 +238,8 @@ public class Comparation{
           System.exit(0);
           break;
         case 4:
-          
-         /* System.out.println("\n=======Buscar por========");
+      /*    
+          System.out.println("\n=======Buscar por========");
           System.out.println("1. cui");
           System.out.println("2. email");
           System.out.println("3. name");
@@ -309,6 +309,7 @@ public class Comparation{
               System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
           }
           System.exit(0);
+<<<<<<< HEAD
           break;
           */
           break;
