@@ -130,4 +130,30 @@ Entendido el funcionamiento de este algoritmo, podemos aplicarlo para resolver e
   	}
   \end{lstlisting}
 
-
+  \begin{itemize}
+    \item \textbf{Hash: 4da70da9049f884c22478d9aa71fcf9becbbc243}
+    \item En el presente commit encontramos la aplicación del metodo compareString para todos los metodos, esto despues de darnos cuenta que este metodo funcionaria tambien para los otros campos . Se corrigio y cambio el algoritmo de Inserción iterativa cuadratica. En esta version aun se encuentra un error en el algoritmo el ciclo While de los algoritmos el cual no ordenaba el primer elemento, este error se corrigio en la version final del algoritmo
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={Commit:  Nos aventuramos en una exploración cognitiva en la implementación del algoritmo Inserción, sin embargo regresamos al camino correcto donde se logra apreciar mejor su eficiencia y funcionalidad}, numbers=left, firstnumber=1][H]
+  
+    public static void email(Reader.Student[] classmates){
+   	 int j;
+   	 Reader.Student pivot;
+   	 for(int i = 0; i < classmates.length; i++){
+   		j = i - 1;
+   		pivot = classmates[i];
+   		while(j > 0 && compareString(classmates[j].getEmail(), pivot.getEmail())){
+   			classmates[j + 1] = classmates[j];
+        		j--;
+      		}
+      		classmates[j + 1] = pivot;
+    	}
+    }
+  \end{lstlisting}
+ %COMMIT----------------------------------------------
+  \begin{itemize}
+    \item Hash:
+    \item
+  \end{itemize}
+  \begin{lstlisting}[language=Java, caption={TITULOOOOOO}, numbers=left, firstnumber=1][H]
+  \end{lstlisting}
