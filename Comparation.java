@@ -55,6 +55,8 @@ public class Comparation{
   public static void menu(Reader.Student[] s){
     int ri;
     String rs;
+    int o1 = 0;
+    int o2 = 0;
     while (true) {
       System.out.println("\n=======Menu Principal========");
       System.out.println("1. Ordenamiento por Inserción");
@@ -65,6 +67,7 @@ public class Comparation{
       System.out.println("6. Salir");
       System.out.print("Seleccione una opción: ");
       int opcion = sc.nextInt();
+      o1 = opcion;
 
       switch (opcion) {
         case 1:
@@ -78,6 +81,7 @@ public class Comparation{
           System.out.println("7. Genero");
           System.out.println("8. Status");
           opcion = sc.nextInt();
+          o2 = opcion;
           switch (opcion) {
             case 1:
               InsertionSort.cui(s);
@@ -114,7 +118,7 @@ public class Comparation{
             default:
               System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
           }
-          System.exit(0);
+          //System.exit(0);
           break;
         case 2:
           System.out.println("\n=======Ordenar por:========");
@@ -127,6 +131,7 @@ public class Comparation{
           System.out.println("7. Genero");
           System.out.println("8. Status");
           opcion = sc.nextInt();
+          o2 = opcion;
           switch (opcion) {
             case 1:
               QuickSort.cui(s, 0, s.length - 1);
@@ -174,6 +179,7 @@ public class Comparation{
           System.out.println("5. apellido materno");
           System.out.println("6. F. nacimiento");
           opcion = sc.nextInt();
+          o2 = opcion;
           switch (opcion) {
             case 1:
               QuickSort.cui(s, 0, s.length - 1);
@@ -201,7 +207,7 @@ public class Comparation{
               ri = RecursiveBinarySearch.name(s, rs, 0, s.length - 1);
               if (ri != -1 ) System.out.println(s[ri]);
               else System.out.println("No encontrado");
-         break;
+              break;
             case 4:
               QuickSort.lastNameF(s, 0, s.length - 1);
               System.out.println("Ingrese el valor a buscar");
