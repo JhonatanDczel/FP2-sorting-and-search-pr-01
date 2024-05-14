@@ -4,7 +4,7 @@ public class Main{
     public static void main(String[] args){
         Reader lector = new Reader();
         Reader.Student[] students = lector.getData();
-        Insertion.insertionEmail(students);
+        InsertionSort.email(students);
         impr(students);
         int idx = IterativeBinarySearch.email(students,"jgarciafernandez@unsa.edu.pe");
         System.out.println(idx);
